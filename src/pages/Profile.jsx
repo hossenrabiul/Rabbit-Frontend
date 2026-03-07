@@ -11,13 +11,18 @@ const Profile = () => {
   const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = async () => {
-    await fetch("http://localhost:5000/api/auth/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const logout = await fetch(
+      "https://rabbit-backend-1vcy.onrender.com/api/auth/logout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
       },
-      credentials: "include",
-    });
+    );
+
+    console.log(logout);
   };
 
   useEffect(() => {

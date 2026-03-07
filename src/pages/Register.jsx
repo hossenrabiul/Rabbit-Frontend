@@ -19,14 +19,17 @@ const Register = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        " https://rabbit-backend-1vcy.onrender.com/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(userData),
         },
-        credentials: "include",
-        body: JSON.stringify(userData),
-      });
+      );
 
       const data = await res.json();
 

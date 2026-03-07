@@ -40,14 +40,24 @@ const ProductDetails = () => {
   }, [product.image]);
 
   const handleAddToCart = async (id) => {
-    if (!user) {
-      navigate("/login");
+    try {
+      if (!user) {
+        navigate("/login");
+      }
+
+      setIsButtonDisabled(true);
+
+      const addProduct = await addToCart(id, quantity);
+      if (addProduct.success) {
+        toast.success(addProduct.message, { duration: 800 });
+      } else {
+        toast.error(addProduct.message, { duration: 800 });
+      }
+    } catch (error) {
+      toast.error(error.message, { duration: 1000 });
+    } finally {
+      setIsButtonDisabled(false);
     }
-
-    setIsButtonDisabled(true);
-    
-    const addProduct = await addToCart(id, quantity);
-
   };
 
   return (

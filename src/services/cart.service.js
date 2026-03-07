@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getCart = async () => {
   try {
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
     const { data } = await axios.get(`${backend_api}/cart`, {
       withCredentials: true,
     });
@@ -15,7 +15,7 @@ export const getCart = async () => {
 
 export const addToCart = async (productId, quantity = 1) => {
   try {
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
 
     const { data } = await axios.post(
       `${backend_api}/cart`,
@@ -28,8 +28,8 @@ export const addToCart = async (productId, quantity = 1) => {
       },
     );
 
-    console.log(data);
-    return data.data;
+    
+    return data
   } catch (error) {
     console.error("Error adding to cart:", error);
     throw error;
@@ -38,7 +38,7 @@ export const addToCart = async (productId, quantity = 1) => {
 
 export const updateCartItem = async (itemId, quantity) => {
   try {
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
     const { data } = await axios.put(
       `${backend_api}/cart/${itemId}`,
       {
@@ -55,7 +55,7 @@ export const updateCartItem = async (itemId, quantity) => {
 
 export const removeFromCart = async (itemId) => {
   try {
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
     const { data } = await axios.delete(`${backend_api}/cart/${itemId}`, {
       withCredentials: true,
     });
@@ -68,7 +68,7 @@ export const removeFromCart = async (itemId) => {
 
 export const clearCart = async () => {
   try {
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
     const { data } = await axios.delete(`${backend_api}/cart`, {
       withCredentials: true,
     });
