@@ -41,9 +41,9 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", path: "/" },
-    { label: "Men", path: "/collections/all" },
-    { label: "Women", path: "/" },
-    { label: "Children", path: "/" },
+    { label: "Clothes", path: "/collections/all" },
+    // { label: "Women", path: "/" },
+    // { label: "Children", path: "/" },
   ];
 
   return (

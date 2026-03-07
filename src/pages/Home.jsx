@@ -14,11 +14,6 @@ const Home = () => {
         <Hero></Hero>
         <GenderCollectionSection/>
         <NewArrivals/>
-
-        {/* Best seller */}
-        <h2 className='text-3xl text-center font-bold'>Best Seller</h2>
-        {/* <ProductDetails/> */}
-        <TopWearsForWomen/>
         <FeaturedCollection/>
         <FeaturesSection/>
     </div>

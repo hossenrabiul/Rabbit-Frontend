@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaHandsClapping } from "react-icons/fa6";
 import { toast } from "sonner";
 
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,17 +14,20 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(" https://rabbit-backend-1vcy.onrender.com/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        " https://rabbit-backend-1vcy.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email,
+            password,
+          }),
         },
-        credentials: "include",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      );
 
       const data = await res.json();
 
