@@ -74,13 +74,13 @@ const OrderDetailsPage = () => {
         <div className="flex items-center gap-3 mb-3">
           <div className="w-1 h-8 bg-gradient-to-b from-slate-800 to-slate-600 rounded-full"></div>
           <h1 className="text-4xl font-light text-slate-900 tracking-tight">
-            Order <span className="font-semibold">#{order.orderNumber}</span>
+            Order <span className="font-semibold">#{order?.orderNumber}</span>
           </h1>
         </div>
         <p className="text-slate-500 ml-4">
           Order placed on{" "}
           <span className="font-medium text-slate-700">
-            {new Date(order.createdAt).toLocaleDateString("en-US", {
+            {new Date(order?.createdAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -95,30 +95,30 @@ const OrderDetailsPage = () => {
         <div className="flex flex-col sm:flex-row gap-3">
           <div
             className={`flex-1 rounded-lg border-2 p-4 ${getStatusColor(
-              order.status,
+              order?.status,
             )}`}
           >
             <p className="text-xs font-semibold uppercase tracking-widest mb-1">
               Order Status
             </p>
             <p className="text-lg font-semibold capitalize flex items-center gap-2">
-              {order.status === "delivered" && (
+              {order?.status === "delivered" && (
                 <CheckCircle2 className="w-5 h-5" />
               )}
-              {order.status}
+              {order?.status}
             </p>
           </div>
 
           <div
             className={`flex-1 rounded-lg border-2 p-4 ${getPaymentStatusColor(
-              order.paymentStatus,
+              order?.paymentStatus,
             )}`}
           >
             <p className="text-xs font-semibold uppercase tracking-widest mb-1">
               Payment Status
             </p>
             <p className="text-lg font-semibold capitalize">
-              {order.paymentStatus}
+              {order?.paymentStatus}
             </p>
           </div>
         </div>
@@ -136,12 +136,12 @@ const OrderDetailsPage = () => {
             <div className="p-6">
               <KeyValue
                 label="Payment Method"
-                value={order.paymentMethod}
+                value={order?.paymentMethod}
                 icon={CreditCard}
               />
               <KeyValue
                 label="Order Date"
-                value={new Date(order.createdAt).toLocaleDateString("en-US", {
+                value={new Date(order?.createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "short",
                   day: "numeric",
@@ -152,7 +152,7 @@ const OrderDetailsPage = () => {
               />
               <KeyValue
                 label="Total Amount"
-                value={`$${order.total.toFixed(2)}`}
+                value={`$${order?.total?.toFixed(2)}`}
               />
             </div>
           </div>
@@ -166,12 +166,12 @@ const OrderDetailsPage = () => {
               </h2>
             </div>
             <div className="p-6">
-              <KeyValue label="Full Name" value={order.customer.firstName} />
-              <KeyValue label="Email" value={order.customer.email} />
-              <KeyValue label="Phone" value={order.customer.number} />
-              <KeyValue label="Street Address" value={order.customer.address} />
-              <KeyValue label="City" value={order.customer.city} />
-              <KeyValue label="Country" value={order.customer.country} />
+              <KeyValue label="Full Name" value={order?.customer?.firstName} />
+              <KeyValue label="Email" value={order?.customer?.email} />
+              <KeyValue label="Phone" value={order?.customer?.number} />
+              <KeyValue label="Street Address" value={order?.customer?.address} />
+              <KeyValue label="City" value={order?.customer?.city} />
+              <KeyValue label="Country" value={order?.customer?.country} />
             </div>
           </div>
         </div>
@@ -195,8 +195,8 @@ const OrderDetailsPage = () => {
                 <div className="flex-shrink-0">
                   <div className="w-24 h-24 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 group-hover:border-slate-300 transition-colors">
                     <img
-                      src={item.productId.image}
-                      alt={item.productId.name}
+                      src={item?.productId?.image}
+                      alt={item?.productId?.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -205,7 +205,7 @@ const OrderDetailsPage = () => {
                 {/* Product Details */}
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base font-semibold text-slate-900 mb-2">
-                    {item.productId.name}
+                    {item?.productId?.name}
                   </h3>
                   <div className="flex items-center gap-6 text-sm text-slate-600">
                     <span className="flex items-center gap-2">
@@ -217,7 +217,7 @@ const OrderDetailsPage = () => {
                     <span className="flex items-center gap-2">
                       <span className="font-medium">Unit Price:</span>
                       <span className="text-slate-900 font-semibold">
-                        {item.productId.price.toFixed(2)}
+                        {item?.productId?.price.toFixed(2)}
                       </span>
                     </span>
                   </div>
@@ -226,7 +226,7 @@ const OrderDetailsPage = () => {
                 {/* Price */}
                 <div className="flex-shrink-0 text-right">
                   <p className="text-2xl font-bold text-slate-900">
-                    {(item.productId.price * item.quantity).toFixed(2)}
+                    {(item?.productId?.price * item?.quantity).toFixed(2)}
                   </p>
                   <p className="text-xs text-slate-500 mt-1">Subtotal</p>
                 </div>
@@ -242,7 +242,7 @@ const OrderDetailsPage = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-slate-700">
                     <span className="font-medium">Subtotal</span>
-                    <span>{(order.total * 0.9).toFixed(2)}</span>
+                    <span>{(order?.total * 0.9).toFixed(2)}</span>
                   </div>
                  
                   <div className="border-t border-slate-300 pt-3 mt-3 flex justify-between items-center">
@@ -250,7 +250,7 @@ const OrderDetailsPage = () => {
                       Total
                     </span>
                     <span className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                      {order.total.toFixed(2)}
+                      {order?.total?.toFixed(2)}
                     </span>
                   </div>
                 </div>

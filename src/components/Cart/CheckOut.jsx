@@ -287,13 +287,13 @@ const CheckOut = () => {
               <div className="flex items-center gap-4">
                 <img
                   className="w-20 h-24 rounded-md object-cover border"
-                  src={product.productId.image}
+                  src={product?.productId?.image}
                   alt={product.productId.name}
                 />
 
                 <div>
                   <h4 className="text-[16px] font-semibold">
-                    {product.productId.name}
+                    {product?.productId?.name}
                   </h4>
 
                   {/* Quantity Controller */}
@@ -303,7 +303,7 @@ const CheckOut = () => {
                     </button>
 
                     <span className="text-sm font-medium">
-                      {product.quantity}
+                      {product?.quantity}
                     </span>
 
                     <button className="px-2 py-1 border rounded hover:bg-gray-100">
@@ -316,11 +316,11 @@ const CheckOut = () => {
               {/* Right Section */}
               <div className="flex flex-col items-end gap-4">
                 <p className="text-lg font-semibold text-gray-800">
-                  ${product.price}
+                  ${product?.price}
                 </p>
 
                 <button
-                  onClick={() => handleDltProduct(product._id)}
+                  onClick={() => handleDltProduct(product?._id)}
                   className="text-red-500 hover:text-red-700 transition"
                 >
                   <FiTrash2 size={20} />
@@ -332,7 +332,7 @@ const CheckOut = () => {
 
         <div className="flex items-center justify-between text-lg mt-4">
           <p>Subtotal</p>
-          <p>{cart.totalPrice}</p>
+          <p>{cart?.totalPrice}</p>
         </div>
       </div>
     </div>
