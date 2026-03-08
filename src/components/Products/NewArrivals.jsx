@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Heart, Zap, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getProducts } from "../../services/product.service";
 
 const NewArrivals = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [favorites, setFavorites] = useState({});
-
+  const [products, setProducts] = useState([]);
   const allProducts = [
     {
       _id: 1,
@@ -166,6 +167,14 @@ const NewArrivals = () => {
     }));
   };
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await getProducts({ page: 2 });
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+  // console.log(products)
   return (
     <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
       {/* Decorative Background */}
@@ -185,7 +194,9 @@ const NewArrivals = () => {
             New Arrivals
           </h2>
           <p className="text-gray-600 text-lg font-light max-w-3xl mx-auto">
-            Discover the latest luxury jewelry pieces and premium fashion items, freshly added to keep your collection on the cutting edge of elegance
+            Discover the latest luxury jewelry pieces and premium fashion items,
+            freshly added to keep your collection on the cutting edge of
+            elegance
           </p>
         </div>
 
@@ -225,7 +236,7 @@ const NewArrivals = () => {
           ref={scrollRef}
           className="flex overflow-x-scroll gap-6 scroll-smooth no-scrollbar pb-4"
         >
-          {allProducts.map((product) => (
+          {products?.map((product) => (
             <Link
               to={`/product/${product._id}`}
               key={product._id}
@@ -238,23 +249,23 @@ const NewArrivals = () => {
                 {/* Image Container */}
                 <div className="relative h-80 md:h-96 overflow-hidden bg-gray-100">
                   <img
-                    src={product.image[0].url}
-                    alt={product.image[0].alt}
+                    src={product.image}
+                    alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     draggable="false"
                   />
 
                   {/* Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-amber-500 text-white text-xs font-semibold uppercase tracking-widest rounded-full">
+                  {/* <div className="absolute top-4 left-4 px-3 py-1 bg-amber-500 text-white text-xs font-semibold uppercase tracking-widest rounded-full">
                     {product.badge}
-                  </div>
+                  </div> */}
 
                   {/* Discount Badge */}
-                  {product.discount && (
+                  {/* {product.discount && (
                     <div className="absolute top-4 right-4 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
                       -{product.discount}%
                     </div>
-                  )}
+                  )} */}
 
                   {/* Favorite Button */}
                   <button
@@ -265,19 +276,23 @@ const NewArrivals = () => {
                         : "bg-white text-gray-900 hover:bg-gray-100 hover:scale-110"
                     }`}
                   >
-                    <Heart className={`w-5 h-5 ${favorites[product._id] ? "fill-current" : ""}`} />
+                    <Heart
+                      className={`w-5 h-5 ${favorites[product._id] ? "fill-current" : ""}`}
+                    />
                   </button>
 
                   {/* Overlay Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300`}
+                  ></div>
                 </div>
 
                 {/* Product Info */}
                 <div className="p-5 md:p-6">
                   {/* Category */}
-                  <p className="text-xs font-light uppercase tracking-widest text-gray-500 mb-2">
+                  {/* <p className="text-xs font-light uppercase tracking-widest text-gray-500 mb-2">
                     {product.category}
-                  </p>
+                  </p> */}
 
                   {/* Title */}
                   <h3 className="text-lg md:text-xl font-light text-gray-900 mb-3 line-clamp-2 group-hover:text-amber-600 transition-colors duration-300">
@@ -308,11 +323,11 @@ const NewArrivals = () => {
                   {/* Price Section */}
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-2xl font-light text-gray-900">
-                      ${product.price}
+                      {product.price} TK
                     </span>
-                    <span className="text-sm text-gray-500 line-through font-light">
-                      ${product.originalPrice}
-                    </span>
+                    {/* <span className="text-sm text-gray-500 line-through font-light">
+                      {product.originalPrice} TK
+                    </span> */}
                   </div>
 
                   {/* CTA Button */}

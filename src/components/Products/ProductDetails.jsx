@@ -115,18 +115,36 @@ const ProductDetails = () => {
             </p>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed mb-3">
-              {product.description}
+            <p className="text-gray-600 leading-relaxed mb-3 text-md font-semibold">
+              {product.kamiz}
             </p>
             <div className="">
-              <h3 className="text-lg font-semibold mb-3">Product Details</h3>
-
-              <div className="grid grid-cols-2 gap-y-2 text-gray-700">
-                <span className="font-medium">Pant Type:</span>
-                <span>{product.pant}</span>
-
-                <span className="font-medium">Quality:</span>
-                <span>{product.quality}</span>
+              {/* <h3 className="text-lg font-semibold mb-3">Product Details</h3> */}
+              <div className="grid grid-cols-1 gap-y-2 text-gray-700">
+                {product.pant ? (
+                  <div>
+                    <span className="font-medium">Pant Type : </span>
+                    <span>{product.pant}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {product.dupatta ? (
+                  <div>
+                    <span className="font-medium">Dupatta : </span>
+                    <span>{product.dupatta}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {product.size ? (
+                  <div>
+                    <span className="font-medium">size : </span>
+                    <span>{product.size}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
 
