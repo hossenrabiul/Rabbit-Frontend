@@ -288,7 +288,7 @@ const CheckOut = () => {
                 <img
                   className="w-20 h-24 rounded-md object-cover border"
                   src={product?.productId?.image}
-                  alt={product.productId.name}
+                  alt={product?.productId?.name}
                 />
 
                 <div>
