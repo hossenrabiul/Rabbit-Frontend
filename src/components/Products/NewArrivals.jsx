@@ -169,7 +169,7 @@ const NewArrivals = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await getProducts({ page: 2 });
+      const { data } = await getProducts({ page: 2, limit: 8 });
       setProducts(data);
     };
     fetchProducts();
