@@ -30,7 +30,7 @@ const Hero = () => {
     {
       id: 3,
       image:
-        "https://images.unsplash.com/photo-1542272604-787c62d465d1?w=1200&h=750&fit=crop",
+        "https://i.ibb.co.com/7Jd2hDkN/Whats-App-Image-2026-03-05-at-7-44-31-PM-1.jpg",
       title: "Summer Vibes",
       subtitle: "Embrace the season with our stunning summer collection",
       cta: "Explore Now",
@@ -39,7 +39,7 @@ const Hero = () => {
     {
       id: 4,
       image:
-        "https://images.unsplash.com/photo-1599643478820-8a82f69b0146?w=1200&h=750&fit=crop",
+        "https://i.ibb.co.com/9kxZRQ1Y/Whats-App-Image-2026-03-05-at-7-52-52-PM-1.jpg",
       title: "Luxury Essentials",
       subtitle: "Premium quality pieces for the modern woman",
       cta: "View Details",

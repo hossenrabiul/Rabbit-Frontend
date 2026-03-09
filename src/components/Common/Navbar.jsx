@@ -62,9 +62,9 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <Link
                 to="/"
-                className="text-3xl font-light tracking-wider text-gray-900 hover:text-gray-600 transition-colors duration-300 group"
+                className="text-[18px] font-light tracking-wide text-gray-900 hover:text-gray-600 transition-colors duration-300 group"
               >
-                <span className="font-serif">✨</span> Jewelry
+                <span className="font-serif">✨</span> Honeybunch By Ishrat
               </Link>
             </div>
 
