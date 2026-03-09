@@ -31,7 +31,7 @@ export const addToCart = async (productId, quantity = 1) => {
 
     return data;
   } catch (error) {
-    console.error("Error adding to cart:", error);
+    console.error("Error adding to cart:", error.message);
     throw error;
   }
 };
