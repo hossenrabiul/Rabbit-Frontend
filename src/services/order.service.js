@@ -19,8 +19,8 @@ export const createOrder = async (customer, items, total) => {
 
 export const getOrders = async () => {
   try {
-    // const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
-    const backend_api = "http://localhost:5000/api";
+    const backend_api = "https://rabbit-backend-1vcy.onrender.com/api";
+    // const backend_api = "http://localhost:5000/api";
     const { data } = await axios.get(`${backend_api}/cart/order/`, {
       withCredentials: true,
     });
