@@ -4,7 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getProduct } from "../../services/product.service";
 import { AuthContext } from "../../context/authContext";
 import { addToCart } from "../../services/cart.service";
-import { Heart, Truck, Shield, RotateCcw, Star, ChevronDown } from "lucide-react";
+import {
+  Heart,
+  Truck,
+  Shield,
+  RotateCcw,
+  Star,
+  ChevronDown,
+} from "lucide-react";
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
@@ -42,6 +49,7 @@ const ProductDetails = () => {
   }, [product.image]);
 
   const handleAddToCart = async (id) => {
+   
     try {
       if (!user) {
         navigate("/login");
@@ -65,18 +73,23 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 pt-[124px] pb-16 mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Breadcrumb Navigation */}
         <div className="mb-8 flex items-center space-x-2 text-sm text-gray-600">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+          <a href="/" className="hover:text-black transition-colors">
+            Home
+          </a>
           <span>/</span>
-          <a href="/collections/all" className="hover:text-black transition-colors">Products</a>
+          <a
+            href="/collections/all"
+            className="hover:text-black transition-colors"
+          >
+            Products
+          </a>
           <span>/</span>
           <span className="text-black font-medium">{product.name}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-          
           {/* Left Column - Image Gallery */}
           <div className="space-y-4">
             {/* Main Image */}
@@ -92,7 +105,7 @@ const ProductDetails = () => {
               {!imageLoaded && (
                 <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
               )}
-              
+
               {/* Wishlist Button */}
               <button
                 onClick={() => setIsWishlisted(!isWishlisted)}
@@ -133,7 +146,6 @@ const ProductDetails = () => {
 
           {/* Right Column - Product Info */}
           <div className="space-y-8">
-            
             {/* Product Title & Rating */}
             <div>
               <div className="flex items-start justify-between mb-4">
@@ -160,16 +172,17 @@ const ProductDetails = () => {
             {/* Price Section */}
             <div className="border-l-4 border-black pl-6 py-2">
               <p className="text-sm text-gray-600 mb-2">Price</p>
-              <p className="text-4xl font-bold text-black">
-                ৳ {product.price}
-              </p>
+              <p className="text-4xl font-bold text-black">৳ {product.price}</p>
               <p className="text-sm text-green-600 font-medium mt-2">
                 ✓ In Stock (12+ available)
               </p>
             </div>
 
             {/* Product Specifications */}
-            {(product.pant || product.dupatta || product.size || product.kamiz) && (
+            {(product.pant ||
+              product.dupatta ||
+              product.size ||
+              product.kamiz) && (
               <div className="bg-white border border-gray-200 rounded-xl p-6">
                 <h3 className="font-semibold text-gray-900 mb-4 text-lg">
                   Specifications
@@ -178,25 +191,33 @@ const ProductDetails = () => {
                   {product.kamiz && (
                     <div className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 last:pb-0">
                       <span className="text-gray-600">Kamiz</span>
-                      <span className="font-medium text-gray-900">{product.kamiz}</span>
+                      <span className="font-medium text-gray-900">
+                        {product.kamiz}
+                      </span>
                     </div>
                   )}
                   {product.pant && (
                     <div className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 last:pb-0">
                       <span className="text-gray-600">Pant Type</span>
-                      <span className="font-medium text-gray-900">{product.pant}</span>
+                      <span className="font-medium text-gray-900">
+                        {product.pant}
+                      </span>
                     </div>
                   )}
                   {product.dupatta && (
                     <div className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 last:pb-0">
                       <span className="text-gray-600">Dupatta</span>
-                      <span className="font-medium text-gray-900">{product.dupatta}</span>
+                      <span className="font-medium text-gray-900">
+                        {product.dupatta}
+                      </span>
                     </div>
                   )}
                   {product.size && (
                     <div className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 last:pb-0">
                       <span className="text-gray-600">Size</span>
-                      <span className="font-medium text-gray-900">{product.size}</span>
+                      <span className="font-medium text-gray-900">
+                        {product.size}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -273,7 +294,9 @@ const ProductDetails = () => {
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
               <div className="text-center space-y-2">
                 <Truck className="mx-auto text-gray-700" size={24} />
-                <p className="text-xs font-medium text-gray-700">Fast Delivery</p>
+                <p className="text-xs font-medium text-gray-700">
+                  Fast Delivery
+                </p>
                 <p className="text-xs text-gray-500">Within 2-3 days</p>
               </div>
               <div className="text-center space-y-2">
@@ -292,7 +315,9 @@ const ProductDetails = () => {
 
         {/* Additional Info Section */}
         <div className="border-t border-gray-200 pt-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Why Choose Us</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            Why Choose Us
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               {
@@ -321,7 +346,9 @@ const ProductDetails = () => {
                 className="text-center p-6 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow duration-300"
               >
                 <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-gray-600">{item.desc}</p>
               </div>
             ))}

@@ -6,6 +6,6 @@ export const getCurrentUser = async () => {
   const response = await axios.get(`${backend_api}/auth/me`, {
     withCredentials: true,
   });
-  console.log(response);
+  // console.log(response);
   return response.data;
 };
