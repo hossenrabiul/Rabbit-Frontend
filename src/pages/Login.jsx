@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaHandsClapping } from "react-icons/fa6";
 import { toast } from "sonner";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

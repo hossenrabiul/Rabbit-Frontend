@@ -28,10 +28,9 @@ export const addToCart = async (productId, quantity = 1) => {
         withCredentials: true,
       },
     );
-
     return data;
   } catch (error) {
-    console.error("Error adding to cart:", error.message);
+    console.error("Error adding to cart:::", error);
     throw error;
   }
 };
